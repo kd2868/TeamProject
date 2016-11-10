@@ -8,6 +8,7 @@ function createTextField($id, $label, $size) {
 		$errorSpan = '<span class="help-block">'.$label.' must be entered.</span>';
 		$value = null;
 	}
+	
 	return '
 	   <div class="col-sm-'.$size.'">	
 	   <div class="form-group'.$errorClass.'">
@@ -24,6 +25,11 @@ function createSpecialTextField($typeOfTextField, $id, $label, $size) {
 	if ($value == "!missing!") {
 		$errorClass = " has-error";
 		$errorSpan = '<span class="help-block">'.$label.' must be entered.</span>';
+		$value = null;
+	}
+	else if ($value == "!invalid!") {
+		$errorClass = " has-error";
+		$errorSpan = '<span class="help-block">'.$label.' is invalid.</span>';
 		$value = null;
 	}
 	return '
