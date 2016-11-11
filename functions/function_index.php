@@ -1,4 +1,9 @@
 <?php
+	
+	//Start or Resume session
+	session_start();
+	
+	
 	require 'login_functions.php';
 	require 'webpage_generation.php';
 	require 'form_generation.php';

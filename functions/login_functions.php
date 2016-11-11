@@ -2,7 +2,37 @@
 
 function createLoginForm($displayDate){
 	return '
-	<div class="centeredContent">
+	<center><img class="img-responsive" src="images/compile.png" alt="{Compile}"></center>	
+	<form method="post" action="login.php?action=submit">
+	 <div class="row">
+        <div class="col-sm-3"></div>
+        '.createTextField("username", "Username", 6).'
+        <div class="col-sm-3"></div>
+    </div>
+    
+     <div class="row" >
+        <div class="col-sm-3"></div> 
+        '.createSpecialTextField("password", "password", "Password", 6).'
+        <div class="col-sm-3"></div> 
+      </div>    
+    
+    
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <button style="text-align:center;" type="submit" class="btn btn-success btn-lg"> Submit </button>
+            </div>
+        <div class="col-sm-3"></div>
+        </div>
+        
+        
+    </div>
+        </form>
+	';
+	
+	//old:
+	/*
+	'<div class="centeredContent">
 		<div style="padding: 2%;">
 			<div class="alert alert-info"><h2>Login</h2>
 				<strong>Date:</strong>'. $displayDate.'
@@ -25,6 +55,7 @@ function createLoginForm($displayDate){
 		</form>
    </div>
    ';
+   */
 }
 
 
@@ -65,13 +96,14 @@ function processLoginForm($displayDate){
 }
 	
 function redirectIfLoggedIn(){
-	if($_SESSION['userType'] == 'Professor'){
+	if($_SESSION['userType'] == 2){
 			header('location: /~perm_team4_2016/team_project/professor_landing.php');
 			return;
 	}
 	else{
+		die("nope");
 			header('location: /~perm_team4_2016/team_project/professor_landing.php');
-			die('To be continued...');
+			return;
 	}
 }
 
