@@ -101,9 +101,8 @@ function redirectIfLoggedIn(){
 			return;
 	}
 	else{
-		die("nope");
-			header('location: /~perm_team4_2016/team_project/professor_landing.php');
-			return;
+		header('location: /~perm_team4_2016/team_project/login.php');
+		return;
 	}
 }
 
