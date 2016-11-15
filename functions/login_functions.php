@@ -143,8 +143,8 @@ function checkPassword($tableName) {
 		//set session variables
 		$_SESSION['userType'] = $admin_type;
 		$_SESSION['username'] = $username;
-		$_SESSION['lastName'] = $lastName;
-		$_SESSION['firstName'] = $firstName;
+		$_SESSION['lastName'] = $last;
+		$_SESSION['firstName'] = $first;
 		return true;
 	}
     else

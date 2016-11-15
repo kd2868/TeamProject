@@ -16,27 +16,34 @@ function createHeader($title, $css) {
   return $output;
   }
   
-  function createFooter() {
+  function createFooter($scripts) {
   $year = date('Y');
-  return '
- 
-	<footer>
+  $footer = '<footer>
 								<div class="row">
-									<div class="col-lg-8">
-										<p>
-											
-											<a href="https://www.siena.edu/">Siena College</a>
-										</p>
-										<p>Copyright &copy; //NoComment '.$year.'</p>
+									<div class = "container text-center">
+										<div class="col-sm-3"></div>
+										<div class="col-sm-6">
+											<p>
+												
+												<a href="https://www.siena.edu/">Siena College</a>
+											</p>
+											<p>Copyright &copy; //NoComment '.$year.'</p>
+										</div>
+										<div class="col-sm-3"></div>
 									</div>
 								</div>
 								<!-- /.row -->
 							</footer>
-    </div>
+    </div>';
+	// Add for each loop here
+	
+	$footer .= '
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
   </html>';
+	
+  return $footer;
 }
 
 ?>
