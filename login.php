@@ -13,12 +13,21 @@
 	date_default_timezone_set('America/New_York');
 	$displayDate = date(" F j, Y, g:i a");
 	echo createHeader('Login Form');
-	if($_GET['action']!='submit'){
+	if($_GET['action']=='submit'){
+		echo processLoginForm($displayDate);
+	}
+	else if($_GET['action']=='forgot'){
+		echo displayForgotPasswordForm($displayDate);
+		
+	}
+	else if ($_GET['action']=='processForgotPassword'){
+		// Process username here
+		//if username is not in database, through issue
+		//else send back to login
 		echo createLoginForm($displayDate);
 	}
 	else{
-		echo processLoginForm($displayDate);
-		
+		echo createLoginForm($displayDate);
 	}
 	echo createFooter($scripts);
 	

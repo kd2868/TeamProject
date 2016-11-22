@@ -1,5 +1,37 @@
 <?php
 
+function displayForgotPasswordForm($displayDate){
+	return '
+	<center><img class="img-responsive" src="images/compile.png" alt="{Compile}"></center>	
+	<form method="post" action="login.php?action=processForgotPassword">
+	 
+	 <div class = "row">
+	 <center><h4>Please type in your username so we can send you an email.</h4></center>
+	 
+	 </div>
+	 <div class="row">
+        <div class="col-sm-3"></div>
+        '.createTextField("username", "Username", 6).'
+        <div class="col-sm-3"></div>
+    </div>
+    
+    
+    
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <button style="text-align:center;" type="submit" class="btn btn-success btn-lg"> Send Email </button>
+            </div>
+			
+        <div class="col-sm-3"></div>
+        </div>
+        
+        
+    </div>
+        </form>
+	';
+}
+
 function createLoginForm($displayDate){
 	return '
 	<center><img class="img-responsive" src="images/compile.png" alt="{Compile}"></center>	
@@ -19,9 +51,12 @@ function createLoginForm($displayDate){
     
     <div class="row">
         <div class="col-sm-3"></div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <button style="text-align:center;" type="submit" class="btn btn-success btn-lg"> Submit </button>
             </div>
+			<div class="col-sm-2">
+			 <a class="forgot" href="?action=forgot">Forgot password?</a>
+			 </div>
         <div class="col-sm-3"></div>
         </div>
         
