@@ -8,6 +8,11 @@ function createTextField($id, $label, $size) {
 		$errorSpan = '<span class="help-block">'.$label.' must be entered.</span>';
 		$value = null;
 	}
+	else if ($value == "!invalid!") {
+		$errorClass = " has-error";
+		$errorSpan = '<span class="help-block">'.$label.' is invalid.</span>';
+		$value = null;
+	}
 	
 	return '
 	   <div class="col-sm-'.$size.'">	

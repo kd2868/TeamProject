@@ -1,5 +1,5 @@
 <?php
-function createHeader($title, $css) {
+function createHeader($title, $css, $script) {
   $output= '
   <!DOCTYPE html>
   <html lang="en">
@@ -8,17 +8,34 @@ function createHeader($title, $css) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>'.$title.'</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/portfolio-item.css"> 
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/footer.css" rel="stylesheet">
+	';
+	
+	// Add in the custom css
+	foreach ($css as $key => $value) {
+		$output .= '<link href="'. $value.'" rel="stylesheet">';
+	}
+	
+	foreach ($script as $key => $value) {
+		$footer .= '<script src="'. $value.'"></script>';
+	}
+	
+	$output .='
   </head>
   </body>
-  <div class="container">';
+  <div id="wrapper">
+  <div id="container">
+  <div class="content">';
   return $output;
   }
   
   function createFooter($scripts) {
   $year = date('Y');
-  $footer = '<footer>
+  $footer = '
+  </div>
+  <div id="footer">
+  <footer>
 								<div class="row">
 									<div class = "container text-center">
 										<div class="col-sm-3"></div>
@@ -34,12 +51,21 @@ function createHeader($title, $css) {
 								</div>
 								<!-- /.row -->
 							</footer>
-    </div>';
+							</div>
+    </div>
+	</div>
+	<!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+	';
 	// Add for each loop here
+	foreach ($scripts as $key => $value) {
+		$footer .= '<script src="'. $value.'"></script>';
+	}
 	
-	$footer .= '
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	$footer .= '	
   </body>
   </html>';
 	

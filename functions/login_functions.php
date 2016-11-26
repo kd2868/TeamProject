@@ -1,6 +1,6 @@
 <?php
 
-function displayForgotPasswordForm($displayDate){
+function displayForgotPasswordForm(){
 	return '
 	<center><img class="img-responsive" src="images/compile.png" alt="{Compile}"></center>	
 	<form method="post" action="login.php?action=processForgotPassword">
@@ -21,8 +21,9 @@ function displayForgotPasswordForm($displayDate){
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
             <button style="text-align:center;" type="submit" class="btn btn-success btn-lg"> Send Email </button>
-            </div>
-			
+            <a class="btn btn-primary btn-lg" href="login.php" role="button">Back</a>
+        </div>
+		
         <div class="col-sm-3"></div>
         </div>
         
@@ -32,7 +33,7 @@ function displayForgotPasswordForm($displayDate){
 	';
 }
 
-function createLoginForm($displayDate){
+function createLoginForm(){
 	return '
 	<center><img class="img-responsive" src="images/compile.png" alt="{Compile}"></center>	
 	<form method="post" action="login.php?action=submit">
@@ -65,36 +66,10 @@ function createLoginForm($displayDate){
         </form>
 	';
 	
-	//old:
-	/*
-	'<div class="centeredContent">
-		<div style="padding: 2%;">
-			<div class="alert alert-info"><h2>Login</h2>
-				<strong>Date:</strong>'. $displayDate.'
-			</div>
-		</div>
-		<form method="post" action="login.php?action=submit">
-	  
-		   <div class="row">'.		 
-			   createTextField("username", "Username", 5).
-			   createSpecialTextField("password", "password", "Password", 5).'
-		   </div>
-	   <div class="row">
-		   <div class="col-sm-4">
-		   </div>
-		   <div class="col-sm-offset-4">
-				<button style="text-align:center;" type="submit" class="btn btn-success btn-lg"> Submit </button>
-		   </div>
-	   </div>
- 
-		</form>
-   </div>
-   ';
-   */
+	
 }
 
-
-function processLoginForm($displayDate){
+function processLoginForm(){
 		
 		/*
 			check if user and password are null 
@@ -109,10 +84,8 @@ function processLoginForm($displayDate){
 			$fieldMissing = true;
 			}
 		}
-		if ($fieldMissing) {
-			date_default_timezone_set('America/New_York');
-			$displayDate = date(" F j, Y, g:i a");
-			return createLoginForm($displayDate);
+		if ($fieldMissing) {			
+			return createLoginForm();
 		}
 	
 		/*
@@ -123,10 +96,8 @@ function processLoginForm($displayDate){
 			return redirectIfLoggedIn();
 		}
 		else{
-			date_default_timezone_set('America/New_York');
-			$displayDate = date(" F j, Y, g:i a");
 			$_POST['password'] = "!invalid!";
-			return createLoginForm($displayDate);
+			return createLoginForm();
 		}
 }
 	
@@ -141,12 +112,92 @@ function redirectIfLoggedIn(){
 	}
 }
 
+function processForgotPassword(){	
+	//get username
+	$submitted_username = $_POST['username'];
+	//die($submitted_username);
+	//if nothing was submitted
+	if($submitted_username==''){
+		$_POST['username'] = '!missing!';
+		return displayForgotPasswordForm();
+	}
+	//connect to database
+	$mysqli = databaseConnect();
+	
+	//prepare to execute sql statement
+	if (!($stmt = $mysqli->prepare("SELECT email FROM user WHERE id=?"))) {
+		die("Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error);
+	}
+	
+	//bind username to statement... to avoid sql injection attacks
+	$stmt->bind_param("s", $submitted_username );
+	
+	//execute statement and check for errors
+	if (!$stmt->execute()) {
+		die("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+	}
+	
+	if (!$stmt->bind_result($email )) {
+		echo "Binding output parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+	}
+	
+	
+	if ($stmt->fetch() && $email!='') {
+		return sendEmail($email);
+		return createLoginForm();
+	}
+	//if not valid
+	$_POST['username']='!invalid!';
+	return displayForgotPasswordForm();
+	
+	
+	
+}
+
+function sendEmail($email){
+	// send off email with link
+	
+	// have a quick email sent page and ok button back to log in
+	return emailSent();
+}
+
+function emailSent(){
+	return '<center><img class="img-responsive" src="images/compile.png" alt="{Compile}"></center>	
+	<form method="post" action="login.php">
+	 
+    <div class="row">
+	 <div class="col-sm-4"></div>
+        <center>
+			<div class="col-sm-4">
+				<div class="alert alert-success" role="alert">
+					Email Sent!
+				</div>
+			</div>
+		</center>
+	 <div class="col-sm-4"></div>
+	</div>
+    <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2">
+            <button style="text-align:center;" type="submit" class="btn btn-success btn-lg"> Back To Login </button>
+         </div>
+		
+        <div class="col-sm-5"></div>
+        </div>
+        
+        
+    </div>
+        </form>
+	';
+}
+
 function checkPassword($tableName) {
   //conenct to database
   $mysqli = databaseConnect();
   
   //get hashed password
   $submitted_passwd = hash( 'sha256', $_POST['password']);
+  
   
   //get username
   $submitted_username = $_POST['username'];
@@ -186,4 +237,5 @@ function checkPassword($tableName) {
       return false;
   }
 }
+
 ?>
