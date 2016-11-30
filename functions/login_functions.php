@@ -143,7 +143,7 @@ function processForgotPassword(){
 	
 	
 	if ($stmt->fetch() && $email!='') {
-		return sendEmail($email);
+		return sendEmail($_POST['username'], $email);
 		return createLoginForm();
 	}
 	//if not valid
@@ -154,8 +154,59 @@ function processForgotPassword(){
 	
 }
 
-function sendEmail($email){
-	// send off email with link
+
+function generateRandomString($length) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
+function sendEmail($id, $email){
+	
+	//create new password for person
+	$newPassword = generateRandomString(rand(7,10));
+
+	//hash it
+	$hashPassword = hash( 'sha256', $newPassword);
+	//store in database
+	setNewPassword($id, $hashPassword);
+	
+	
+	
+	// send off email with new password and link
+	$msg = 'Hi, 
+
+	We are resetting your password. Please log back in to
+	 
+http://oraserv.cs.siena.edu/~perm_team4_2016/team_project/login.php          
+and try using:  '.$newPassword.' as your brand new password! 
+
+Once you log in, click the settings button and there is
+a change password button. You will need your new temporary password
+again.
+	
+	Happy Coding!
+
+	{compile}
+	
+If you received this email by mistake, please delete it.
+Do not reply to this email as you will not receive any response.
+It is an unmonitored email account. For additional information, please email:
+	u18anti@siena.edu 
+	Thank you!
+		
+	';
+	
+	//word wrap line
+	$msg = wordwrap($msg,70);
+	
+	//send email
+	
+	mail($email, "Forgot Password", $msg);
 	
 	// have a quick email sent page and ok button back to log in
 	return emailSent();
@@ -203,7 +254,7 @@ function checkPassword($tableName) {
   $submitted_username = $_POST['username'];
     
   //prepare to execute sql statement
-  if (!($stmt = $mysqli->prepare("SELECT id, password, userAccessLevel, lname, fname  FROM `".$tableName ."` WHERE id=?"))) {
+  if (!($stmt = $mysqli->prepare("SELECT id, password, userAccessLevel, lname, fname, email  FROM `".$tableName ."` WHERE id=?"))) {
     die("Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error);
   }
 
@@ -218,7 +269,7 @@ function checkPassword($tableName) {
   //set stored password variable
   $stored_passwd = null;
   // bind results to variables
-  if (!$stmt->bind_result($username, $stored_passwd, $admin_type, $last, $first )) {
+  if (!$stmt->bind_result($username, $stored_passwd, $admin_type, $last, $first, $email )) {
     echo "Binding output parameters failed: (" . $stmt->errno . ") " . $stmt->error;
   }
   
@@ -231,6 +282,8 @@ function checkPassword($tableName) {
 		$_SESSION['username'] = $username;
 		$_SESSION['lastName'] = $last;
 		$_SESSION['firstName'] = $first;
+		$_SESSION['email'] = $email;
+		$_SESSION['id'] = $submitted_username;
 		return true;
 	}
     else

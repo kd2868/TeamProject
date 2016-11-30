@@ -9,6 +9,8 @@
 	require 'form_generation.php';
 	require 'database_functions.php';
 	require 'professor_landing_functions.php';
+	require 'setting_functions.php';
+	
 	
 	//dataBaseConnect function
 	$path = dirname(__DIR__); 

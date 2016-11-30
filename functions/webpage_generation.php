@@ -48,6 +48,13 @@ function createTopNavigation(){
 						  </ul>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
+					<!--Settings-->
+					<li>
+					  <a href="settings.php">
+					  Settings
+								<span class="glyphicon glyphicon-wrench"></span>
+					</a>
+					</li>
 					<!--Log out button-->
 					<li>
 					  <a href="logout.php">
@@ -73,7 +80,9 @@ function createHeader($title, $css, $script) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>'.$title.'</title>
+	<link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+	<title>'.$title.'</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/footer.css" rel="stylesheet">
 	';

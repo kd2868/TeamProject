@@ -13,6 +13,12 @@ $script = array ('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js',
 $scripts = array('js/MenuToggle.js');
 	echo createHeader('Professor Landing Page', $css, $script);
 	echo createTopNavigation();
+	echo '<br>
+	<h3>'.$_SESSION['firstName'] .'  '.$_SESSION['lastName'].'</h3><br>';
+	//generate classes
+	
+	
+	
 	$scripts = array('js/MenuToggle.js');
 	echo createFooter($scripts);
 ?>
