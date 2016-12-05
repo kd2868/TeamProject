@@ -25,8 +25,6 @@ function displayForgotPasswordForm(){
         </div>
 		
         <div class="col-sm-3"></div>
-        </div>
-        
         
     </div>
         </form>
@@ -59,8 +57,6 @@ function createLoginForm(){
 			 <a class="forgot" href="?action=forgot">Forgot password?</a>
 			 </div>
         <div class="col-sm-3"></div>
-        </div>
-        
         
     </div>
         </form>
@@ -182,7 +178,7 @@ function sendEmail($id, $email){
 
 	We are resetting your password. Please log back in to
 	 
-http://oraserv.cs.siena.edu/~perm_team4_2016/team_project/login.php          
+http://oraserv.cs.siena.edu/~perm_team4_2016/team_project/login.php           
 and try using:  '.$newPassword.' as your brand new password! 
 
 Once you log in, click the settings button and there is

@@ -19,7 +19,7 @@ function createTopNavigation(){
 				
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 				<!-- This controlls the drop down menu for problems -->
 					<li class="dropdown">
@@ -29,7 +29,7 @@ function createTopNavigation(){
 							<li><a href="#">Create an Assignment</a></li>
 							<li><a href="#">Problem Creation</a></li>							
 						</ul>
-						
+					</li>
 				<!-- This controlls the drop down menu for calender -->		
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Calendar <span class="caret"></span></a>
@@ -38,6 +38,7 @@ function createTopNavigation(){
 							<li><a href="#">View Calendar</a></li>
 							
 						  </ul>   
+					</li>
 				<!-- This controlls the drop down menu for classes -->
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Classes <span class="caret"></span></a>
@@ -46,6 +47,7 @@ function createTopNavigation(){
 							<li><a href="#">Notifications</a></li>
 							<li><a href="#">Class Listing</a></li>
 						  </ul>
+					</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 					<!--Settings-->
@@ -59,7 +61,7 @@ function createTopNavigation(){
 					<li>
 					  <a href="logout.php">
 					  Sign Out
-								<span style= "padding-right:60px;"class="glyphicon glyphicon-log-out"></span>
+								<span style= "padding-right:60px;" class="glyphicon glyphicon-log-out"></span>
 					</a>
 					</li>	  
 				</ul>
@@ -83,7 +85,8 @@ function createHeader($title, $css, $script) {
 	<link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
 	<link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
 	<title>'.$title.'</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+	
+    <link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/footer.css" rel="stylesheet">
 	';
 	
@@ -98,7 +101,7 @@ function createHeader($title, $css, $script) {
 	
 	$output .='
   </head>
-  </body>
+  <body>
   <div id="wrapper">
   <div id="container">
   <div class="content">';
@@ -109,6 +112,7 @@ function createHeader($title, $css, $script) {
   $year = date('Y');
   $footer = '
   </div>
+  
   <div id="footer">
   <footer>
 								<div class="row">

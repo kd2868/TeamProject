@@ -1,7 +1,13 @@
 <?php
 
 
+function displayCourses(){
+	$output = '';
+	$courseInfo = ''; // Get course info from database
 	
+	
+	return $output;
+}
 	
 function createSideBar(){
 	return '
