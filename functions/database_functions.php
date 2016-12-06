@@ -61,7 +61,7 @@ function checkPasswordUpdate($tableName, $password) {
   if (!$stmt->bind_result($stored_passwd)) {
     echo "Binding output parameters failed: (" . $stmt->errno . ") " . $stmt->error;
   }
-  
+ 
   //fetch results
   if ($stmt->fetch()) {
 	  //check if hashed passwords match

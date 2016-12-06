@@ -1,17 +1,2 @@
-/*!
- * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
 
- body {
-    overflow-x: hidden;
- }
-body {
-    padding-top: 35px; /* normally at 70 changed for simple sidebar.css Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-}
 
-.pageText
-{
-	font-size: 20px;
-}
