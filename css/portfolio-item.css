@@ -4,22 +4,13 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
-body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-}
+
 
 .portfolio-item {
     margin-bottom: 25px;
 }
 
-footer {
-	width:100%;
-    position: absolute;
-	right:0;
-	bottom:0;
-	left:0;
-    text-align: center;
-}
+
 
 .imgcontainer {
     text-align:center;

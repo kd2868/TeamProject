@@ -9,7 +9,8 @@ function createAProblemForm(){
 
     <form method="post" action ="problemCreation.php?action=submit">
        
-           Problem Name: <br>
+           <h3>Problem Name: </h3>
+		   <br>
 	       <input type="text" placeholder="Problem Name" />
        
         
@@ -28,7 +29,7 @@ function createAProblemForm(){
         <br>
        
             Problem Description: <br>
-            <textarea name="problem" rows="10" cols="30"></textarea>
+            <textarea name="problem" rows="10" cols="60"></textarea>
     
         <br>
    
@@ -38,9 +39,9 @@ function createAProblemForm(){
 
 			
 			Test Cases: <br>
-	       <input type="text" placeholder="Test Case 1" />
+	       <input type="text" placeholder="Input 1" /> <input type="text" placeholder="Output 1" />
 		   <br>
-		   <input type="text" placeholder="Test Case 2" />
+		   <input type="text" placeholder="Input 2" /> <input type="text" placeholder="Output 2" />
 		   
         <br>
     

@@ -14,7 +14,7 @@ require 'functions/function_index.php';
 	$script = array ('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js',
 	'https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js');
 
-	echo createHeader('Professor Archive Page', $css, $script);
+	echo createHeader('Create a Problem Page', $css, $script);
 	echo createTopNavigation();
 	echo '<br>';
 	

@@ -124,27 +124,19 @@ function createHeader($title, $css, $script) {
   $year = date('Y');
   $footer = '
   </div>
-  
-  <div id="footer">
-  <footer>
-								<div class="row">
-									<div class = "container text-center">
-										<div class="col-sm-3"></div>
-										<div class="col-sm-6">
-											<p>
-												
-												<a href="https://www.siena.edu/">Siena College</a>
-											</p>
-											<p>Copyright &copy; //NoComment '.$year.'</p>
-										</div>
-										<div class="col-sm-3"></div>
-									</div>
-								</div>
-								<!-- /.row -->
-							</footer>
-							</div>
-    </div>
+  </div>
 	</div>
+			
+			<footer class="footer">
+      <div class="container">
+	  <center><p></p>
+        <p class="text-muted"><a href="https://www.siena.edu/">Siena College</a>
+										<p>Copyright &copy; //NoComment '.$year.'</p>
+										</p><p></p>
+										</center>
+      </div>
+    </footer>
+			
 	<!-- jQuery -->
     <script src="js/jquery.js"></script>
 

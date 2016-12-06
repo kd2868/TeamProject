@@ -11,13 +11,13 @@ function displayCourses(){
 		<div class= "col-sm-4">
 			<div class="panel panel-default">
 				<div class= "panel-heading">
-					CSIS 225 - Object Oriented Programming
+					<h3> Object Oriented Programming</h3>
 				</div>
 				<div class= "panel-body ">
 					<div class="card">
 			
 						<div >
-							<h4><b>01</b></h4> 
+							<h4><b>CSIS 225 - 01</b></h4> 
 							<p>Fall 2016</p> 
 						</div>
 					</div>
@@ -27,13 +27,13 @@ function displayCourses(){
 		<div class= "col-sm-4">
 			<div class="panel panel-default">
 				<div class= "panel-heading">
-					CSIS 110 - Introduction to Programming
+					<h3>Introduction to Programming</h3>
 				</div>
 				<div class= "panel-body ">
 					<div class="card">
 			
 						<div >
-							<h4><b>01</b></h4> 
+							<h4><b>CSIS 110 - 01</b></h4> 
 							<p>Fall 2016</p> 
 						</div>
 					</div>
@@ -52,13 +52,13 @@ function displayCourses(){
 		<div class= "col-sm-4">
 			<div class="panel panel-default">
 				<div class= "panel-heading">
-					CSIS 110 - Introduction to Programming
+					<h3>Introduction to Programming</h3>
 				</div>
 				<div class= "panel-body ">
 					<div class="card">
 			
 						<div >
-							<h4><b>04</b></h4> 
+							<h4><b>CSIS 110 - 04</b></h4> 
 							<p>Fall 2016</p> 
 						</div>
 					</div>
@@ -68,13 +68,13 @@ function displayCourses(){
 		<div class= "col-sm-4">
 			<div class="panel panel-default">
 				<div class= "panel-heading">
-					Programming Contest Team
+					<h3>Programming Contest Team</h3>
 				</div>
 				<div class= "panel-body ">
 					<div class="card">
 			
 						<div >
-							<h4><b>01</b></h4> 
+							
 							<p>Fall 2016</p> 
 						</div>
 					</div>
