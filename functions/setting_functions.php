@@ -1,19 +1,21 @@
 <?php
 
 function addSettingOptions(){
-	return '
-	<br>
-	<h3>'.$_SESSION['firstName'] .'  '.$_SESSION['lastName'].'</h3>
+	$output = displayName();
+	$output .= '
 	<div>
 		
 		<br>
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-10">
 				<a href="settings.php?action=changePassword" class="btn btn-info" role="button">Change Password</a>
 			</div>
 		</div>
 	</div>
 	';
+	return $output;
+	
 	
 }
 
@@ -60,8 +62,6 @@ function createChangePassword($alert){
 	
 	
 }
-
-
 
 function processChangePassword(){
 	

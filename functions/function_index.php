@@ -10,6 +10,8 @@
 	require 'database_functions.php';
 	require 'professor_landing_functions.php';
 	require 'setting_functions.php';
+	require 'problem_Archive_functions.php';
+	require 'create_problem_functions.php';
 	
 	
 	//dataBaseConnect function

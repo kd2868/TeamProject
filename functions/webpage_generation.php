@@ -1,5 +1,17 @@
 <?php
 
+function displayName(){
+	return '
+	<div class="row">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-10">
+	<br>
+	<h3>'.$_SESSION['firstName'] .'  '.$_SESSION['lastName'].'</h3><br>
+	</div>
+	</div>
+	';
+}
+
 function createTopNavigation(){
 	$toReturn = "";
 	$toReturn = '<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -25,9 +37,9 @@ function createTopNavigation(){
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Problems <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Archive of Problems</a></li>
+							<li><a href="problemArchive.php">Archive of Problems</a></li>
 							<li><a href="#">Create an Assignment</a></li>
-							<li><a href="#">Problem Creation</a></li>							
+							<li><a href="problemCreation.php">Problem Creation</a></li>							
 						</ul>
 					</li>
 				<!-- This controlls the drop down menu for calender -->		

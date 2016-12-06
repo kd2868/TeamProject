@@ -1,6 +1,5 @@
 <?php
-
-	require 'functions/function_index.php';
+require 'functions/function_index.php';
 	
 	//redirect if not logged in
 	if(!isset($_SESSION['userType'])){
@@ -8,21 +7,25 @@
 		return;
 	}
 
-	$css = array('css/portfolio-item.css'
-	
+	$css = array('css/portfolio-item.css', 
+	 'css/cssCreateProblem.css',
+	 'http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css'
 	);
 	$script = array ('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js',
 	'https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js');
 
-	echo createHeader('Professor Landing Page', $css, $script);
+	echo createHeader('Professor Archive Page', $css, $script);
 	echo createTopNavigation();
-	echo displayName();
+	echo '<br>';
 	
-	//generate classes
-	
-	echo displayCourses();
-	
+	if($_GET['action']==submit){
+		echo processCreateProblemForm();
+	}
+	else{
+		echo createAProblemForm();
+	}
 	
 	$scripts = array('js/MenuToggle.js');
 	echo createFooter($scripts);
+
 ?>
